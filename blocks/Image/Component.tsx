@@ -5,7 +5,6 @@ import classes from './index.module.css';
 import sizes from './sizes.json';
 import { MediaType } from '../../collections/Media';
 
-
 export type Type = {
   blockType: 'image'
   blockName?: string

@@ -22,24 +22,18 @@ export type MediaType = {
 const Media: CollectionConfig = {
   slug: 'media',
   access: {
-    read: (): boolean => true, // Everyone can read Media
+    read: (): boolean => true,
   },
   upload: {
     adminThumbnail: 'card',
-    imageSizes: [
-      {
-        name: 'card',
-        width: 640,
-        height: 480,
-      },
-      {
-        name: 'feature',
-        width: 1024,
-        height: 576,
-      },
-    ],
   },
   fields: [
+    {
+      name: 'label',
+      label: 'Label',
+      type: 'text',
+      required: true,
+    },
     {
       name: 'alt',
       label: 'Alt Text',

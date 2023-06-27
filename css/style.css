@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  color: var(--color-dark-gray);
+  color: var(--color-black-darkest);
 }
 
 :root {
@@ -13,7 +13,10 @@ html, body {
 
   --baseline : 30px;
 
-  --color-dark-gray: #212121;
+  --color-black-lightest: #f1f1f1;
+  --color-black-lighter: #dddddd;
+  --color-black-darkest: #333333;
+  --color-gold: #e0aa32;
 }
 
 img {
