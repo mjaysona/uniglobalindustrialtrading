@@ -4,6 +4,7 @@ import { ContactType } from '../../globals/Contact';
 import Link from 'next/link';
 import { SocialsType } from '../../globals/Socials';
 import { LinkType } from '../../fields/link';
+import classes from './index.module.scss';
 
 type Props = {
   menu: MenuType,
@@ -13,7 +14,7 @@ type Props = {
 
 const Footer: React.FC<Props> = ({ menu, contact, socials }) => {
   return (
-    <footer className="footer">
+    <footer className={classes.footer}>
       <div>
         <div className="footer__menu">
           {menu.menuItems.map((item) => {

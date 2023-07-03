@@ -6,7 +6,7 @@
 # Installation
 
 ### Install the following:
-- `yarn` or `npm`
+- `yarn`
 - `mongodb` 
 
 ## Run in local server
@@ -29,7 +29,6 @@ Replace the `SECRET_KEY` and `MONGODB_SERVER` with the correct values. Coordinat
 
 > Note: Do not commit the `.env` file to git repository.
 
-
 ### 1. Connect to mongodb cluster
 
 <ul>
@@ -41,16 +40,9 @@ Replace the `SECRET_KEY` and `MONGODB_SERVER` with the correct values. Coordinat
     </li>
 </ul>
 
-### 2a. If installed via `yarn`.
+### 2. In the terminal, go to project root directory and run `yarn` to install packages.
 
 <ol>
     <li>In terminal, run <code>yarn install</code> in the root of this project.</li>
     <li>In terminal, run <code>yarn dev</code></li>
-</ol>
-
-### 2b. If installed via `npm`.
-
-<ol>
-    <li>In terminal, run <code>npm install</code> in the root of this project.</li>
-    <li>In terminal, run <code>npm dev</code></li>
 </ol>

@@ -1,5 +1,12 @@
-html, body {
-  font-family: system-ui, Segoe UI, Helvetica Neue, Arial;
+@import './font.scss';
+
+html {
+  font-family: Poppins, Helvetica Neue, Arial;
+  font-size: 16px;
+}
+
+body {
+  font-size: 0.875rem;
   margin: 0;
   padding: 0;
   line-height: 1.5;
@@ -7,9 +14,11 @@ html, body {
 }
 
 :root {
-  --max-width-s : 640px;
-  --max-width-m : 1024px;
-  --max-width-l : 1440px;
+  --max-width-xxs : 360px;
+  --max-width-xs : 480px;
+  --max-width-sm : 640px;
+  --max-width-md : 1024px;
+  --max-width-lg : 1440px;
 
   --baseline : 30px;
 
@@ -26,17 +35,22 @@ img {
 
 h1, h2, h3, h4 {
   line-height: 1.2;
+  margin: 0;
 }
 
-h1 { font-size: 80px; }
+h2, h3, h4, h5 {
+  font-weight: 600;
+}
 
-h2 { font-size: 60px; }
+h1 { font-size: 3rem; }
 
-h3 { font-size: 40px; }
+h2 { font-size: 2.25rem; }
 
-h4 { font-size: 30px; }
+h3 {  font-size: 2rem; }
 
-h5 { font-size: 25px; }
+h4 { font-size: 1.125rem; }
+
+h5 { font-size: initial; }
 
 h6 { font-size: 20px; }
 

@@ -1,0 +1,13 @@
+.header {
+	display: flex;
+	&__logo {
+		width: 200px;
+	}
+	& {
+		&__home {
+			height: 0;
+			position: relative;
+			z-index: 1;
+		}   
+	}
+}

@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import Header from '../components/Header';
 import { MenuType } from '../globals/Menu';
 
-import '../css/style.css';
+import '../css/style.scss';
 import { ContactType } from '../globals/Contact';
 import { SocialsType } from '../globals/Socials';
 

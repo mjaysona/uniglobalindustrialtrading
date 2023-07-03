@@ -3,7 +3,6 @@ import { PageType } from '../collections/Page';
 
 export type LinkType = {
   link: {
-    id: string,
     type: 'page' | 'custom',
     isNewTab?: boolean,
     label: string,
@@ -14,8 +13,6 @@ export type LinkType = {
 };
 
 const link: (isCustom?: boolean) => Field = (isCustom = false): Field => {
-  console.log('isCustom', isCustom);
-
   return {
     name: 'link',
     type: 'group',
@@ -76,7 +73,7 @@ const link: (isCustom?: boolean) => Field = (isCustom = false): Field => {
         name: 'isNewTab',
         label: 'Open in new tab?',
         type: 'checkbox',
-        defaultValue: true,
+        defaultValue: false,
         required: true,
         admin: {
           condition: (_, siblingData) => siblingData.type === 'custom'

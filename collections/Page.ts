@@ -1,27 +1,31 @@
 import { CollectionConfig } from 'payload/types';
 import { MediaType } from './Media';
-import { Image } from '../blocks/Image/Config';
 import { Type as ImageType } from '../blocks/Image/Component';
-import { CallToAction } from '../blocks/CallToAction/Config';
 import { Type as CallToActionType } from '../blocks/CallToAction/Component';
 import slug from '../fields/slug';
 import link, { LinkType } from '../fields/link';
+import BannerBlock from '../blocks/BannerBlock/BannerBlock';
+import CardImagesBlock from '../blocks/CardImagesBlock/CardImagesBlock';
+import FeaturedProductsBlock from '../blocks/FeaturedProductsBlock/FeaturedProductsBlock';
+import BasicMultipleColumnsBlock from '../blocks/BasicMultipleColumnsBlock/BasicMultipleColumnsBlock';
+import ImageContentRowBlock from '../blocks/ImageContentRowBlock/ImageContentRowBlock';
+import MessageBubblesBlock from '../blocks/MessageBubblesBlock/MessageBubblesBlock';
+import SlidingCardsBlock from '../blocks/SlidingCardsBlock/SlidingCardsBlock';
+import VerticalTabsBlock from '../blocks/VerticalTabsBlock/VerticalTabsBlock';
 
 export type Layout = CallToActionType | ImageType
 
 export type PageType = {
-  slug: string
-  title: string
-  image?: MediaType
-  headline: string
-  description: string
+  slug: string,
+  title: string,
+  image?: MediaType,
   buttons: LinkType[],
-  layout: Layout[]
+  layout: Layout[],
   meta: {
-    title?: string
-    description?: string
-    keywords?: string
-  }
+    title?: string,
+    description?: string,
+    keywords?: string,
+  },
 }
 
 export const Page: CollectionConfig = {
@@ -40,23 +44,6 @@ export const Page: CollectionConfig = {
       required: true,
     },
     {
-      name: 'image',
-      label: 'Featured Image',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
-      name: 'headline',
-      label: 'Headline',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'description',
-      label: 'Description',
-      type: 'textarea',
-    },
-    {
       name: 'buttons',
       label: 'Buttons',
       type: 'array',
@@ -70,8 +57,14 @@ export const Page: CollectionConfig = {
       type: 'blocks',
       minRows: 1,
       blocks: [
-        CallToAction,
-        Image,
+        BannerBlock,
+        CardImagesBlock,
+        FeaturedProductsBlock,
+        BasicMultipleColumnsBlock,
+        ImageContentRowBlock,
+        MessageBubblesBlock,
+        SlidingCardsBlock,
+        VerticalTabsBlock,
       ],
     },
     {

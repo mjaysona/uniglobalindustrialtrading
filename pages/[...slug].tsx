@@ -1,6 +1,5 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import getConfig from 'next/config';
 import NotFound from '../components/NotFound';
 import Head from '../components/Head';
 import RenderBlocks from '../components/RenderBlocks';
@@ -35,15 +34,7 @@ const Page: React.FC<Props> = (props) => {
         description={page.meta?.description}
         keywords={page.meta?.keywords}
       />
-      {/* <div className={classes.featuredImage}>
-        {page.image && (
-          <img
-            src={`${SERVER_URL}/media/${page.image.sizes?.feature?.filename || page.image.filename}`}
-            alt={page.image.alt}
-          />
-        )}
-      </div> */}
-      <RenderBlocks layout={page.layout} />
+      <RenderBlocks  layout={page.layout}/>
     </Template>
   );
 };
