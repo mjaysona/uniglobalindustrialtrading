@@ -1,13 +1,54 @@
 .header {
 	display: flex;
-	&__logo {
-		width: 200px;
+	a {
+		color: white;
+		display: inline-block;
+		text-decoration: none;
+		text-transform: uppercase;
+		&:hover {
+			color: var(--color-gold);
+		}
+	}
+	&__content {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+	&__menu {
+		display: flex;
+		justify-content: space-between;
+		flex-grow: 1;
+		padding: 0 min(4%, 6rem);
+		min-width: 480px;
+		> div {
+			display: inline-block;
+		}
 	}
 	& {
+		&__default &__logo,
+		&__home &__logo {
+			width: 100%;
+		}
+		&__default &__logo {
+			max-width: 172px;
+		}
 		&__home {
-			height: 0;
-			position: relative;
+			position: absolute;
+			top: 2rem;
+			width: 100%;
 			z-index: 1;
-		}   
+		}
+		&__home &__logo {
+			min-width: 172px;
+			max-width: 300px;
+		}
+	}
+	&__contact {
+		color: white;
+		min-width: 220px;
+		text-align: right;
+		a:hover {
+			color: white;
+		}
 	}
 }

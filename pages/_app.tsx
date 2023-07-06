@@ -6,10 +6,15 @@ import { MenuType } from '../globals/Menu';
 import '../css/style.scss';
 import { ContactType } from '../globals/Contact';
 import { SocialsType } from '../globals/Socials';
+import { useRouter } from 'next/router';
 
 type AppProps = {
   pageProps: unknown,
-  Component: React.FC<{ menu: MenuType, contact: ContactType }>,
+  Component: React.FC<{
+    menu: MenuType,
+    contact: ContactType,
+    socials: SocialsType,
+  }>,
 } & {
   menu: MenuType,
   contact: ContactType,
@@ -18,12 +23,16 @@ type AppProps = {
 
 const MyApp = (appProps: AppProps): React.ReactElement => {
   const { Component, pageProps, menu, contact, socials } = appProps;
+
+  const router = useRouter();
+  const currentRoute = router.pathname;
   
   return (
     <Fragment>
       <Header
         contact={contact}
         menu={menu}
+        isHomepage={currentRoute === '/'}
       />
       <Component
         {...pageProps}

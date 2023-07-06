@@ -1,15 +1,19 @@
 import { Block } from 'payload/types';
 import link, { LinkType } from '../../fields/link';
 import { Option } from 'payload/dist/fields/config/types';
-import { Upload } from 'payload/dist/uploads/types';
+import { MediaType } from '../../collections/Media';
 
 export type ImageContentRowBlockType = {
   layout: Option,
-  image: Upload,
+  image: MediaType,
   title: string,
   description: unknown,
-  list: LinkType[],
-} & LinkType
+  list: {
+    link: LinkType,
+    id: string,
+  }[],
+  link: LinkType,
+}
 
 export const ImageContentRowBlock: Block = {
   slug: 'imageContentRow',
@@ -26,11 +30,11 @@ export const ImageContentRowBlock: Block = {
       required: true,
       options: [
         {
-          label: 'Image left - Content right',
+          label: 'Image right - Content left',
           value: 'imgRight',
         },
         {
-          label: 'Image right - Content left',
+          label: 'Image left - Content right',
           value: 'imgLeft',
         },
       ],

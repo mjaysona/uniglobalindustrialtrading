@@ -1,3 +1,48 @@
 .image-content-row {
-    padding: 2rem;
+    display: flex;
+    &--default {
+        > div {
+            &:first-child {
+                padding-left: 0;
+            }
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+    &--reversed {
+        flex-direction: row-reverse;
+        > div {
+            &:first-child {
+                padding-right: 0;
+            }
+            &:last-child {
+                padding-left: 0;
+            }
+        }
+    }
+    &--extended &__image {
+        position: relative;
+        top: -7rem;
+    }
+    &__image, &__content {
+        width: 50%;
+        padding: 0 1.5rem;
+    }
+    &__image {
+        padding: 2rem 1.5rem 0;
+    }
+    &__image img {
+         border-radius: 1rem;
+         overflow: hidden;
+    }
+    &__content {
+        padding: 2.5rem 1.5rem 7.5rem;
+    }
+    &__list {
+        &__cta, &__item {
+            display: inline-block;
+            padding: 0 0.5rem 0.5rem 0;
+        }
+    }
 }

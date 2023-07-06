@@ -2,13 +2,11 @@ import { Field } from 'payload/types';
 import { PageType } from '../collections/Page';
 
 export type LinkType = {
-  link: {
-    type: 'page' | 'custom',
-    isNewTab?: boolean,
-    label: string,
-    url?: string,
-    page?: PageType,
-  },
+  type: 'page' | 'custom',
+  isNewTab?: boolean,
+  label: string,
+  url?: string,
+  page?: PageType,
   id: string,
 };
 

@@ -17,7 +17,7 @@ export type MediaType = {
       height: number,
     },
   },
-  url: unknown,,
+  url: string,
 }
 
 const Media: CollectionConfig = {

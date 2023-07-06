@@ -9,32 +9,42 @@ import Container from '../Container';
 type Props = {
   menu: MenuType,
   contact: ContactType,
+  isHomepage: boolean,
 };
 
-const Header: React.FC<Props> = ({ menu, contact }) => {
+const Header: React.FC<Props> = ({ menu, contact, isHomepage }) => {
   return (
-    <header className={[classes.header, classes.header__home].join(' ')}>
+    <header className={[
+      classes['header'],
+      classes[isHomepage ? 'header__home' : 'header__default'],
+    ].join(' ')}>
       <Container>
-        <div className={classes.header__logo}>
-          <UniglobalLogo />
-        </div>
-        <div className={classes.header__menu}>
-          {menu.menuItems.map((item) => {
-            return (
-              <Link
-                href={`/${item.link.page.slug}`}
-                key={item.id}
-              >
-                {item.link.label}
-              </Link>
-            )
-          })}
-        </div>
-        {contact.addresses && (
-          <div className={classes.header__contact}>
-            { contact.addresses[0].contactNumber }
+        <div className={classes['header__content']}>
+          <div className={classes['header__logo']}>
+            <UniglobalLogo />
           </div>
-        )}
+          <div className={classes['header__menu']}>
+            {menu.menuItems.map((item) => {
+              return (
+                <div key={item.id}>
+                  <Link
+                    href={`/${item.link.page.slug}`}
+                    key={item.id}
+                  >
+                    {item.link.label}
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+          {contact.addresses && (
+            <h4 className={classes['header__contact']}>
+              <Link href={`tel:${contact.addresses[0].contactNumber}`}>
+                {contact.addresses[0].contactNumber}
+              </Link>
+            </h4>
+          )}
+        </div>
       </Container>
     </header>
   );

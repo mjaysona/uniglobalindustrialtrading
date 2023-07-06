@@ -8,7 +8,9 @@ export type BannerBlockType = {
   description: string,
   type: Option,
   image: MediaType,
-} & LinkType
+  imageOverlay: MediaType,
+  link: LinkType,
+}
 
 export const BannerBlock: Block = {
   slug: 'banner',

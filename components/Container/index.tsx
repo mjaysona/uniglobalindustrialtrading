@@ -1,17 +1,10 @@
 import React from 'react';
 import classes from './index.module.scss';
 
-type Props = {
-  containerized?: boolean,
-}
-
-const Container: React.FC<Props> = ({ children, containerized = true }) => {
+const Container: React.FC = ({ children }) => {
   return (
     <div className={classes['container']}>
-      <div className={[
-        classes['container__wrapper'],
-        containerized ? classes['container__wrapper--containerized'] : ''
-      ].join(' ')}>
+      <div className={classes['container__wrapper']}>
         {children}
       </div>
     </div>

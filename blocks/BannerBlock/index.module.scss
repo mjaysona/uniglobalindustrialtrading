@@ -1,6 +1,24 @@
 .banner {
   color: white;
   &__main {
-    padding-top: 4rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &__content {
+      max-width: 75%;
+      p {
+        max-width: 60%;
+      }
+      &__cta {
+        padding-top: 1rem;
+      }
+    }
+    &__overlay {
+      background-repeat: no-repeat;
+      background-position: right -40px bottom -40px;
+      background-size: 888px;
+      height: calc(78vh - 15rem);
+      padding-top: 15rem;
+    }
+    
   }
 }

@@ -1,37 +1,47 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import RichText from '../../components/RichText';
-import classes from './index.module.css';
+import classes from './index.module.scss';
+import Container from '../../components/Container';
+import Card from '../../components/Card';
 import { SlidingCardsBlockType } from './SlidingCardsBlock';
 
 export const Component: React.FC<SlidingCardsBlockType> = (props) => {
-  const { 
+  const {
     title,
     description,
     card,
-  } = props;
+  } = props;``
 
   return (
-    <div className={classes['sliding-cards']}>
-      {title && (<h2>{title}</h2>)}
-      {description && (
-        <RichText
-          content={description}
-        />
-      )}
+    <div className={classes['host']}>
+      <Container>
+        <div className={classes['sliding-cards']}>
+          <div className={classes['sliding-cards__header']}>
+            {title && (<h2>{title}</h2>)}
+            {description && (
+              <RichText content={description} />
+            )}
+          </div>
+        </div>
+      </Container>
       {card.length && (
-        <div className={classes['sliding-cards-type__cards']}>
-          {card.map((card) => (
+        <div className={classes['sliding-cards__items']}>
+          {card.map((item) => (
             <div
-              className={classes['sliding-cards-type__card']}
-              key={card.id}
+              className={classes['sliding-cards__item']}
+              key={item.id}
             >
-              {card.logoHeader && (
-                <div className={classes['sliding-cards-type__card__image']}>
-                  IMAGE HERE
+              <Card>
+                <div className={classes['sliding-cards__item__logo']}>
+                  <img src={item.logoHeader.url} />
                 </div>
-              )}
-              <h5>{card.title}</h5>
-              <p>{card.description}</p>
+                <div className={classes['sliding-cards__item__title']}>
+                  <h5>{item.title}</h5>
+                </div>
+                <div className={classes['sliding-cards__item__description']}>
+                  {item.description}
+                </div>
+              </Card>
             </div>
           ))}
         </div>

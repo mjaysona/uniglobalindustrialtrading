@@ -18,11 +18,9 @@ const RenderBlocks: React.FC<Props> = ({ layout }) => {
 
         if (Block) {
           return (
-            <Container key={i}>
-              <section>
-                <Block {...block} />
-              </section>
-            </Container>
+            <section key={i}>
+              <Block {...block} />
+            </section>
           );
         }
 
