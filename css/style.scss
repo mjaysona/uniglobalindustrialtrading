@@ -10,10 +10,12 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  color: var(--color-black-darkest);
+  color: var(--font-color);
 }
 
 :root {
+  --font-color: #111111;
+
   --max-width-xxs : 360px;
   --max-width-xs : 480px;
   --max-width-sm : 640px;
@@ -24,8 +26,9 @@ body {
 
   --color-black-lightest: #f1f1f1;
   --color-black-lighter: #dddddd;
-  --color-black-darkest: #333333;
+  --color-black-darkest: #111111;
   --color-gold: #e0aa32;
+  --color-gold-darker: #dca221;
 }
 
 img {
@@ -51,8 +54,30 @@ h3 {  font-size: 2rem; }
 h4 { font-size: 1.125rem; }
 
 h5 {
-  font-size: initial;
+  font-size: 0.875rem;
   margin: 0;
 }
 
-h6 { font-size: 20px; }
+h6 {
+  font-size: 1rem;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+a {
+  color: var(--font-color);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+strong {
+  font-weight: 600;
+}
+
+.inverted {
+  a {
+    color: white;
+  }
+}

@@ -1,19 +1,25 @@
 import { CollectionConfig } from 'payload/types';
 import { MediaType } from './Media';
-import { Type as ImageType } from '../blocks/Image/Component';
-import { Type as CallToActionType } from '../blocks/CallToAction/Component';
 import slug from '../fields/slug';
-import link, { LinkType } from '../fields/link';
+import { LinkType } from '../fields/link';
 import BannerBlock from '../blocks/BannerBlock/BannerBlock';
 import CardImagesBlock from '../blocks/CardImagesBlock/CardImagesBlock';
+import ContentBlock from '../blocks/ContentBlock/ContentBlock';
 import FeaturedProductsBlock from '../blocks/FeaturedProductsBlock/FeaturedProductsBlock';
+import FormBlock from '../blocks/FormBlock/FormBlock';
 import BasicMultipleColumnsBlock from '../blocks/BasicMultipleColumnsBlock/BasicMultipleColumnsBlock';
 import ImageContentRowBlock from '../blocks/ImageContentRowBlock/ImageContentRowBlock';
 import MessageBubblesBlock from '../blocks/MessageBubblesBlock/MessageBubblesBlock';
 import SlidingCardsBlock from '../blocks/SlidingCardsBlock/SlidingCardsBlock';
 import VerticalTabsBlock from '../blocks/VerticalTabsBlock/VerticalTabsBlock';
+import ContactUsBlock from '../blocks/ContactUsBlock/ContactUsBlock';
+import CardLogosBlock from '../blocks/CardLogosBlock/CardLogosBlock';
 
-export type Layout = CallToActionType | ImageType
+export type Layout = {
+  blockType: string,
+  blockName: string,
+  width?: 'full' | 'half',
+}
 
 export type PageType = {
   slug: string,
@@ -44,12 +50,11 @@ export const Page: CollectionConfig = {
       required: true,
     },
     {
-      name: 'buttons',
-      label: 'Buttons',
-      type: 'array',
-      fields: [
-        link(),
-      ],
+      name: 'isMain',
+      label: 'Is this a main page?',
+      type: 'checkbox',
+      defaultValue: true,
+      required: true,
     },
     {
       name: 'layout',
@@ -57,10 +62,14 @@ export const Page: CollectionConfig = {
       type: 'blocks',
       minRows: 1,
       blocks: [
+        BasicMultipleColumnsBlock,
         BannerBlock,
         CardImagesBlock,
+        CardLogosBlock,
+        ContactUsBlock,
+        ContentBlock,
         FeaturedProductsBlock,
-        BasicMultipleColumnsBlock,
+        FormBlock,
         ImageContentRowBlock,
         MessageBubblesBlock,
         SlidingCardsBlock,

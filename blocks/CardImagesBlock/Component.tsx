@@ -1,33 +1,23 @@
-import React, { Fragment } from 'react';
-import RichText from '../../components/RichText';
-import classes from './index.module.css';
-import Container from '../../components/Container';
-import Card from '../../components/Card';
+import React from 'react';
+import classes from './index.module.scss';
+import { CardImagesType } from './CardImagesBlock';
 
-export type Type = {
-  blockType: 'content'
-  blockName?: string
-  content: unknown
-}
-
-export const Component: React.FC<Type> = (props) => {
-  const { content } = props;
+export const Component: React.FC<CardImagesType> = (props) => {
+  const { title, items } = props;
 
   return (
-    <Fragment>
-      <Container>
-        <div className={classes['cards-section']}>
-          <RichText
-            content={content}
-            className={classes.content}
-          />
-          <div className={classes['cards-section__list']}>
-            <Card>
-              Test
-            </Card>
+    <div className={classes['cards-images']}>
+      <h4>{title}</h4>
+      <div className={classes['cards-images__items']}>
+        {items.map((item) => (
+          <div
+            className={classes['cards-images__item']}
+            style={{ backgroundImage: `url(${item.image.url})` }}
+          >
+            <p>{item.name}</p>
           </div>
-        </div>
-      </Container>
-    </Fragment>
+        ))}
+      </div>
+    </div>
   );
 };

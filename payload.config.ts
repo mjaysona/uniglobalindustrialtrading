@@ -2,13 +2,14 @@ import { buildConfig } from 'payload/config';
 import dotenv from 'dotenv';
 import Page from './collections/Page';
 import Media from './collections/Media';
-import Product from './collections/Product';
-import ProductCategories from './collections/ProductCategory';
-import ProductType from './collections/ProductType';
-import ProductTag from './collections/ProductTag';
+import Products from './collections/Products';
+import ProductGroup from './collections/ProductGroup';
+import ProductPurpose from './collections/ProductPurpose';
 import Menu from './globals/Menu';
 import Contact from './globals/Contact';
 import Socials from './globals/Socials';
+import ProductBrand from './collections/ProductBrand';
+import { LexicalPlugin } from 'payload-plugin-lexical';
 
 dotenv.config();
 
@@ -22,9 +23,12 @@ export default buildConfig({
   collections: [
     Page,
     Media,
-    ProductType,
-    ProductCategories,
-    Product,
-    ProductTag,
+    Products,
+    ProductPurpose,
+    ProductGroup,
+    ProductBrand,
   ],
+  plugins: [
+    LexicalPlugin({}),
+  ]
 });

@@ -1,16 +1,38 @@
 import { Field } from 'payload/types';
 import { PageType } from '../collections/Page';
+import { dynamicIconImports } from 'lucide-react';
+
+type Props = {
+  type: 'page' | 'custom' | 'button',
+  label: string,
+  id: string,
+}
+
+export type ButtonType = {
+  buttonType: 'primary' | 'secondary' | 'default',
+  hasIcon?: boolean,
+  iconName?: keyof typeof dynamicIconImports,
+  iconPlacement?: 'left' | 'right',
+} & Props;
 
 export type LinkType = {
-  type: 'page' | 'custom',
   isNewTab?: boolean,
-  label: string,
   url?: string,
   page?: PageType,
-  id: string,
+} & Props;
+
+export type CtaType = ButtonType & LinkType;
+
+type ParamsType = {
+  isButton?: boolean,
+  isCustom?: boolean,
+  required?: boolean,
 };
 
-const link: (isCustom?: boolean) => Field = (isCustom = false): Field => {
+const link: (params?: ParamsType) => Field = ({
+  isCustom = false,
+  required = true,
+} = {}): Field => {
   return {
     name: 'link',
     type: 'group',
@@ -28,9 +50,35 @@ const link: (isCustom?: boolean) => Field = (isCustom = false): Field => {
             label: 'Custom URL',
             value: 'custom',
           },
+          {
+            label: 'Button',
+            value: 'button',
+          },
         ],
         admin: {
           condition: () => !isCustom,
+        },
+      },
+      {
+        name: 'buttonType',
+        type: 'radio',
+        defaultValue: 'default',
+        options: [
+          {
+            label: 'Primary',
+            value: 'primary',
+          },
+          {
+            label: 'Secondary',
+            value: 'secondary',
+          },
+          {
+            label: 'Default',
+            value: 'default',
+          },
+        ],
+        admin: {
+          condition: (_, siblingData) => siblingData.type === 'button',
         },
       },
       {
@@ -40,17 +88,17 @@ const link: (isCustom?: boolean) => Field = (isCustom = false): Field => {
             name: 'label',
             label: 'Label',
             type: 'text',
-            required: true,
+            required: required,
           },
           {
             name: 'page',
             label: 'Page link to',
             type: 'relationship',
-            required: true,
+            required: required,
             relationTo: 'pages',
             admin: {
               condition: (_, siblingData) => {
-                return siblingData.type === 'page' && !isCustom
+                return siblingData.type === 'page' && !isCustom && siblingData.type !== 'button';
               }
             },
           },
@@ -58,10 +106,10 @@ const link: (isCustom?: boolean) => Field = (isCustom = false): Field => {
             name: 'url',
             label: 'Url',
             type: 'text',
-            required: true,
+            required: required,
             admin: {
-              condition: (data, siblingData) => {
-                return siblingData.type === 'custom' || isCustom;
+              condition: (_, siblingData) => {
+                return siblingData.type === 'custom' || isCustom && siblingData.type !== 'button';
               }
             },
           },
@@ -72,10 +120,50 @@ const link: (isCustom?: boolean) => Field = (isCustom = false): Field => {
         label: 'Open in new tab?',
         type: 'checkbox',
         defaultValue: false,
+        required: required,
+        admin: {
+          condition: (_, siblingData) => siblingData.type === 'custom' && siblingData.type !== 'button',
+        },
+      },
+      {
+        name: 'hasIcon',
+        label: 'Has an icon?',
+        type: 'checkbox',
+        defaultValue: false,
         required: true,
         admin: {
-          condition: (_, siblingData) => siblingData.type === 'custom'
+          condition: (_, siblingData) => siblingData.type === 'button',
         },
+      },
+      {
+        name: 'iconPlacement',
+        label: 'Icon placement',
+        type: 'radio',
+        defaultValue: 'left',
+        required: true,
+        options: [
+          {
+            label: 'Left',
+            value: 'left',
+          },
+          {
+            label: 'Right',
+            value: 'right',
+          },
+        ],
+        admin: {
+          condition: (_, siblingData) => siblingData.hasIcon && siblingData.type === 'button',
+        },
+      },
+      {
+        name: 'iconName',
+        label: 'Icon name',
+        type: 'text',
+        required: true,
+        admin: {
+          description: 'Refer to https://lucide.dev/icons/',
+          condition: (_, siblingData) => siblingData.hasIcon && siblingData.type === 'button',
+        }
       },
     ],
   };

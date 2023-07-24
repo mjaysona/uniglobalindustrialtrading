@@ -9,10 +9,9 @@ export const Component: React.FC<BasicMultipleColumnsBlockType> = (props) => {
   const {
     title,
     description,
-    columnCount,
     hasImages,
-    imagesType,
     columns,
+    columnCount,
   } = props;
 
   return (
@@ -29,7 +28,10 @@ export const Component: React.FC<BasicMultipleColumnsBlockType> = (props) => {
             )}
           </div>
           {columns.length && (
-            <div className={classes['basic-multiple-columns__grouped-items']}>
+            <div
+              className={classes['basic-multiple-columns__grouped-items']}
+              style={{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}
+            >
               {columns.map(({title, description, id, image}) => (
                 <div
                   className={classes['basic-multiple-columns__item']}

@@ -56,16 +56,23 @@ export const ImageContentRowBlock: Block = {
       label: 'Description',
       type: 'richText',
     },
+    link({ required: false }),
     {
       name: 'list',
       label: 'List',
-      type: 'array',
-      required: false,
+      type: 'group',
       fields: [
-        link(),
+        {
+          name: 'items',
+          label: {
+            singular: 'Item',
+            plural: 'Items',
+          },
+          type: 'relationship',
+          relationTo: 'products',
+        },
       ],
     },
-    link(),
   ],
 };
 

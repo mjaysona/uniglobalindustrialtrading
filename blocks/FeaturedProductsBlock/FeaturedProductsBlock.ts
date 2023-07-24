@@ -1,6 +1,6 @@
 import { Block } from 'payload/types';
 import { MediaType } from '../../collections/Media';
-import link, { LinkType } from '../../fields/link';
+import link, { CtaType, LinkType } from '../../fields/link';
 
 export type FeaturedProductsBlockType = {
   title?: string,
@@ -10,7 +10,7 @@ export type FeaturedProductsBlockType = {
     brandName: string,
     productName: string,
     id: string,
-    link: LinkType,
+    link: CtaType,
   }[],
 }
 

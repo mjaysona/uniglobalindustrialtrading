@@ -1,8 +1,12 @@
 import { GlobalConfig } from 'payload/types';
-import link, { LinkType } from '../fields/link';
+import { PageType } from '../collections/Page';
 
 export type MenuType = {
-  menuItems: LinkType[],
+  menuItems: {
+    id: string,
+    name: string,
+    page: PageType,
+  }[],
 }
 
 const Menu: GlobalConfig = {
@@ -18,7 +22,19 @@ const Menu: GlobalConfig = {
       type: 'array',
       required: true,
       fields: [
-        link(),
+        {
+          name: 'name',
+          label: 'Name',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'page',
+          label: 'Page',
+          type: 'relationship',
+          relationTo: 'pages',
+          required: true,
+        }
       ],
     },
   ],

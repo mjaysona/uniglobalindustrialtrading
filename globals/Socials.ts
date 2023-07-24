@@ -1,8 +1,13 @@
 import { GlobalConfig } from 'payload/types';
 import link, { LinkType } from '../fields/link';
 
+export type SocialType = {
+  id: string,
+  link: LinkType,
+}
+
 export type SocialsType = {
-  socials: LinkType[],
+  socials: SocialType[],
 }
 
 const Socials: GlobalConfig = {
@@ -19,7 +24,7 @@ const Socials: GlobalConfig = {
       },
       type: 'array',
       fields: [
-        link(true),
+        link({ isCustom: true }),
       ],
     },
   ],

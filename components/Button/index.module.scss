@@ -2,11 +2,26 @@
 	border-radius: 999px;
 	text-transform: uppercase;
 	font-weight: 600;
-	&--md a {
-		padding: 0.5rem 0.75rem;
-	}
-	&--lg a {
-		padding: 0.875rem 1.375rem;
+	padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  &__icon {
+    display: flex;
+    align-items: center;
+    &--left {
+      padding-right: 0.5rem;
+    }
+    &--right {
+      padding-left: 0.5rem;
+    }
+  }
+	&--link {
+		padding: 0;
+		a {
+			display: block;
+			padding: 0.75rem 1.5rem;
+		}
 	}
 	&--primary {
 		color: white;
@@ -17,19 +32,26 @@
 			text-decoration: none;
 			display: inline-block;
 		}
-		&--ghost {
-			background: none;
-			color: var(--color-gold);
-			border: 2px var(--color-gold) solid;
-			a {
-				color: var(--color-gold);
-			}
-			&:hover {
-				background: var(--color-gold);
-				a {
-					color: white;
-				}
-			} 
-		}
+		&:hover {
+			background: var(--color-gold-darker);
+			border: 2px var(--color-gold-darker) solid;
+		} 
 	}
+	&--secondary {
+		background: none;
+		color: var(--color-gold);
+		border: 2px var(--color-gold) solid;
+		a {
+			color: var(--color-gold);
+		}
+		&:hover {
+			background: var(--color-gold);
+			a {
+				color: white;
+			}
+		} 
+	}
+  a:hover {
+    text-decoration: none;
+  }
 }

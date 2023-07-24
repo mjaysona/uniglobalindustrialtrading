@@ -1,0 +1,26 @@
+.cards-images {
+  padding: 3rem 0;
+  h4 {
+    padding-bottom: 1rem;
+  }
+  .cards-images {
+    &__items {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    &__item {
+      background-repeat: none;
+      background-size: cover;
+      border-radius: 0.25rem;
+      box-sizing: border-box;
+      color: white;
+      min-height: 110px;
+      padding: 1rem;
+      text-align: center;
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

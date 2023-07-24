@@ -1,0 +1,72 @@
+.host {
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.message-bubbles {
+  padding: 4rem;
+  &__header {
+    text-align: center;
+    padding-bottom: 3rem
+  }
+  &__item {
+    display: flex;
+    padding-bottom: 3rem;
+    &__avatar {
+      align-items: center;
+      background: white;
+      border: var(--color-black-lighter) 1px solid;
+      border-radius: 999px;
+      box-sizing: border-box;
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      padding: 0.25rem;
+      width: 64px;
+      height: 64px;
+      margin: 16px 56px 0 0;
+      img {
+        border-radius: 999px;
+      }
+    }
+    &__message-bubble {
+      background: white;
+      border: var(--color-black-lighter) 1px solid;
+      border-radius: 0.25rem;
+      padding: 1rem 2rem 2rem;
+      position: relative;
+      width: 100%;
+      &::before {
+        background: white;
+        content: "";
+        height: 1rem;
+        position: absolute;
+        top: 2.5rem;
+        transform: rotate(45deg);
+        width: 1rem;
+        z-index: 0;
+      }
+    }
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    &:nth-child(even) &__avatar {
+      margin: 16px 0 0 56px;
+    }
+    &:nth-child(even) &__message-bubble {
+      &::before {
+        border-right: var(--color-black-lighter) 1px solid;
+        border-top: var(--color-black-lighter) 1px solid;
+        left: calc(100% - 0.5rem);
+      }
+    }
+    &:nth-child(odd) &__message-bubble {
+      &::before {
+        border-bottom: var(--color-black-lighter) 1px solid;
+        border-left: var(--color-black-lighter) 1px solid;
+        right: calc(100% - 0.5rem);
+      }
+    }
+  }
+}

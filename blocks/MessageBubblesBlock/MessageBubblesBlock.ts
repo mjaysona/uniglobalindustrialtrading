@@ -1,4 +1,19 @@
 import { Block } from 'payload/types';
+import { MediaType } from '../../collections/Media';
+
+export type MessageBubblesBlockType = {
+  title: string,
+  description?: unknown,
+  backgroundImage: MediaType,
+  noAvatarImage: MediaType,
+  message: {
+    avatar?: MediaType,
+    message: string,
+    name: string,
+    subName: string,
+    id: string,
+  }[],
+}
 
 export const MessageBubblesBlock: Block = {
   slug: 'messageBubbles',
@@ -17,6 +32,20 @@ export const MessageBubblesBlock: Block = {
       name: 'description',
       label: 'Description',
       type: 'richText',
+    },
+    {
+      name: 'backgroundImage',
+      label: 'Background',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'noAvatarImage',
+      label: 'Image to show when there is no avatar provided',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
     },
     {
       name: 'message',

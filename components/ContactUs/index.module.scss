@@ -1,0 +1,30 @@
+.contact-us {
+  padding: 2rem 0;
+  h4 {
+    padding: 1rem 0 1.5rem;
+  }
+  h5 {
+    padding-bottom: 1rem;
+  }
+  a {
+    color: var(--color-gold);
+  }
+  &__label {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    padding-bottom: 1rem;
+    svg {
+      padding-top: 1px;
+    }
+  }
+  &__menu {
+    &__item {
+      padding-bottom: 0.25rem;
+      a {
+        color: var(--color-gold);
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+    }
+  }
+}

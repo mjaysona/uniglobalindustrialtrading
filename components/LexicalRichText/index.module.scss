@@ -1,0 +1,18 @@
+.richtext {
+  display: block;
+  h3 {
+    margin: 1rem 0 2rem;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  p ~ h5 {
+    margin: 1.5rem 0 0.75rem;
+  }
+  .underline {
+    text-decoration: underline;
+  }
+  a {
+    color: var(--color-gold);
+  }
+}

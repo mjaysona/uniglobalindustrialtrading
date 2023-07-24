@@ -5,19 +5,14 @@ import Head from '../components/Head';
 import RenderBlocks from '../components/RenderBlocks';
 import Template from '../components/Template';
 import { PageType } from '../collections/Page';
-import { MenuType } from '../globals/Menu';
-import { ContactType } from '../globals/Contact';
-import { SocialsType } from '../globals/Socials';
+import { GlobalProps } from './_app';
 
 export type Props = {
   page?: PageType,
-  menu: MenuType,
-  contact: ContactType,
-  socials: SocialsType,
-}
+} & GlobalProps;
 
 const Page: React.FC<Props> = (props) => {
-  const { page, menu, contact, socials } = props;
+  const { page, menu, contact, socials, brands } = props;
 
   if (!page) {
     return <NotFound />;
@@ -28,13 +23,18 @@ const Page: React.FC<Props> = (props) => {
       menu={menu}
       contact={contact}
       socials={socials}
+      brands={brands}
     >
       <Head
         title={page.meta?.title || page.title}
         description={page.meta?.description}
         keywords={page.meta?.keywords}
       />
-      <RenderBlocks  layout={page.layout}/>
+      <RenderBlocks
+        layout={page.layout}
+        contact={contact}
+        socials={socials}
+      />
     </Template>
   );
 };

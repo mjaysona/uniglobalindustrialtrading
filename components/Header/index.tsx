@@ -21,17 +21,17 @@ const Header: React.FC<Props> = ({ menu, contact, isHomepage }) => {
       <Container>
         <div className={classes['header__content']}>
           <div className={classes['header__logo']}>
-            <UniglobalLogo />
+            <Link href="/"><UniglobalLogo /></Link>
           </div>
           <div className={classes['header__menu']}>
             {menu.menuItems.map((item) => {
               return (
                 <div key={item.id}>
                   <Link
-                    href={`/${item.link.page.slug}`}
+                    href={`/${item.page.slug}`}
                     key={item.id}
                   >
-                    {item.link.label}
+                    {item.name}
                   </Link>
                 </div>
               )

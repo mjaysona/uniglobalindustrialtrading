@@ -12,30 +12,38 @@ export const Component: React.FC<BannerBlockType> = (props) => {
     link,
     image,
     imageOverlay,
+    type,
   } = props;
 
   return (
     <div
-      className={[classes['banner'], classes['banner__main']].join(' ')}
+      className={[
+        classes['banner'],
+        type === 'main' ? classes['banner__main'] : classes['banner__default'],
+      ].join(' ')}
       style={{ backgroundImage: `url(${image.url})` }}
     >
       <div
-        className={classes['banner__main__overlay']}
+        className={type === 'main' ? classes['banner__main__overlay'] : '' }
         style={{
           backgroundImage: imageOverlay ? `url(${imageOverlay.url})` : 'none',
         }}
       >
         <Container>
-          <div className={classes['banner__main__content']}>
-              <h1>{headline}</h1>
-              <p>{description}</p>
-              <div className={classes['banner__main__content__cta']}>
-                <Button type='primary' size='lg' ghost>
-                  <Link href={`/${link.page.slug}`}>
-                    {link.label}
-                  </Link>
-                </Button>
+          <div className={classes['banner__content']}>
+            <h1>{headline}</h1>
+            <p>{description}</p>
+            {link.page && link.page.slug && 
+              <div className={classes['banner__content__cta']}>
+                <Button
+                  id={link.id}
+                  label={link.label}
+                  url={`/${link.page.slug}`}
+                  type={link.type}
+                  buttonType='secondary'
+                />
               </div>
+            }
           </div>
         </Container> 
       </div>

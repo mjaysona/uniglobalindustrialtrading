@@ -3,12 +3,6 @@
   margin: calc(var(--baseline) * 2) auto;
 }
 
-.wrap {
-  padding: var(--baseline);
-  background: var(--color-black-darkest);
-  text-align: center;
-}
-
 .content * {
   color: white;
 }
@@ -32,7 +26,7 @@
 .button {
   display: block;
   box-sizing: border-box;
-  color: var(--color-black-darkest);
+  color: var(--font-color);
   text-decoration: none;
   padding: 15px var(--baseline);
   background: white;

@@ -1,4 +1,16 @@
 import { Block } from 'payload/types';
+import link, { LinkType } from '../../fields/link';
+import { MediaType } from '../../collections/Media';
+
+export type CardImagesType = {
+  title: string,
+  description: string,
+  link: LinkType,
+  items: {
+    name: string,
+    image: MediaType,
+  }[],
+};
 
 export const CardImagesBlock: Block = {
   slug: 'cardImages',
@@ -17,46 +29,27 @@ export const CardImagesBlock: Block = {
       label: 'Description',
       type: 'textarea',
     },
+    link({ required: false }),
     {
-      name: 'imagesType',
-      label: 'What kind of images?',
-      type: 'radio',
-      defaultValue: 'vector',
-      required: true,
-      options: [
-        {
-          label: 'Vectors / Logos',
-          value: 'vector',
-        },
-        {
-          label: 'Photos',
-          value: 'photo',
-        },
-      ],
-      admin: {
-        condition: (_, siblingData) => siblingData.hasImages
-      },
-    },
-    {
-      name: 'images',
+      name: 'items',
       labels: {
-        singular: 'Image',
-        plural: 'Images',
+        singular: 'Item',
+        plural: 'Items',
       },
       type: 'array',
       required: true,
       fields: [
+        {
+          name: 'name',
+          label: 'Name',
+          type: 'text',
+        },
         {
           name: 'image',
           label: 'Image',
           type: 'upload',
           relationTo: 'media',
           required: true,
-        },
-        {
-          name: 'title',
-          label: 'Title',
-          type: 'text',
         },
       ],
     },

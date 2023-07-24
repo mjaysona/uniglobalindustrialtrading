@@ -7,22 +7,29 @@ import '../css/style.scss';
 import { ContactType } from '../globals/Contact';
 import { SocialsType } from '../globals/Socials';
 import { useRouter } from 'next/router';
+import { ProductsBrandType } from '../collections/ProductBrand';
 
-type AppProps = {
-  pageProps: unknown,
-  Component: React.FC<{
-    menu: MenuType,
-    contact: ContactType,
-    socials: SocialsType,
-  }>,
-} & {
+export type GlobalProps = {
   menu: MenuType,
   contact: ContactType,
   socials: SocialsType,
-};
+  brands: ProductsBrandType[],
+}
+
+type AppProps = {
+  pageProps: unknown,
+  Component: React.FC<GlobalProps>,
+} & GlobalProps;
 
 const MyApp = (appProps: AppProps): React.ReactElement => {
-  const { Component, pageProps, menu, contact, socials } = appProps;
+  const {
+    Component,
+    pageProps,
+    menu,
+    contact,
+    socials,
+    brands,
+  } = appProps;
 
   const router = useRouter();
   const currentRoute = router.pathname;
@@ -39,6 +46,7 @@ const MyApp = (appProps: AppProps): React.ReactElement => {
         menu={menu}
         contact={contact}
         socials={socials}
+        brands={brands}
       />
     </Fragment>
   );
@@ -51,10 +59,12 @@ MyApp.getInitialProps = async (appContext) => {
     menu,
     contact,
     socials,
+    brands,
   ] = await Promise.all([
     fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/menu`).then((res) => res.json()),
     fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/contact`).then((res) => res.json()),
     fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/socials`).then((res) => res.json()),
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/productBrand`).then((res) => res.json()),
   ]);
 
   return {
@@ -62,6 +72,7 @@ MyApp.getInitialProps = async (appContext) => {
     menu,
     contact,
     socials,
+    brands: brands.docs,
   }
 }
 

@@ -14,16 +14,14 @@ export const Component: React.FC<SlidingCardsBlockType> = (props) => {
 
   return (
     <div className={classes['host']}>
-      <Container>
-        <div className={classes['sliding-cards']}>
-          <div className={classes['sliding-cards__header']}>
-            {title && (<h2>{title}</h2>)}
-            {description && (
-              <RichText content={description} />
-            )}
-          </div>
+      <div className={classes['sliding-cards']}>
+        <div className={classes['sliding-cards__header']}>
+          {title && (<h2>{title}</h2>)}
+          {description && (
+            <RichText content={description} />
+          )}
         </div>
-      </Container>
+      </div>
       {card.length && (
         <div className={classes['sliding-cards__items']}>
           {card.map((item) => (

@@ -1,16 +1,14 @@
 import React, { Fragment } from 'react';
 import Footer from '../Footer';
-import { MenuType } from '../../globals/Menu';
-import { ContactType } from '../../globals/Contact';
-import { SocialsType } from '../../globals/Socials';
+import { GlobalProps } from '../../pages/_app';
 
-type Props = {
-  menu: MenuType,
-  contact: ContactType,
-  socials: SocialsType,
-}
-
-const Template: React.FC<Props> = ({ children, menu, contact, socials }) => {
+const Template: React.FC<GlobalProps> = ({
+  children,
+  menu,
+  contact,
+  socials,
+  brands,
+}) => {
   return (
     <Fragment>
       {children}
@@ -18,6 +16,7 @@ const Template: React.FC<Props> = ({ children, menu, contact, socials }) => {
         menu={menu}
         contact={contact}
         socials={socials}
+        brands={brands}
       />
     </Fragment>
   );

@@ -1,0 +1,32 @@
+.cards-logo {
+  padding: 3rem 0;
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    &__header {
+      max-width: var(--max-width-sm);
+      padding-bottom: 3rem;
+      text-align: center;
+      h4 {
+        padding-bottom: 1rem;
+      }
+    }
+    &__items {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    &__item {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      img {
+        object-fit: contain;
+      }
+      > div {
+        padding-top: 1rem;
+      }
+    }
+  }
+}

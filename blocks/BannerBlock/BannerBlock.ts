@@ -1,12 +1,11 @@
 import { Block } from 'payload/types';
 import link, { LinkType } from '../../fields/link';
-import { Option } from 'payload/dist/fields/config/types';
 import { MediaType } from '../../collections/Media';
 
 export type BannerBlockType = {
   headline: string,
   description: string,
-  type: Option,
+  type: string,
   image: MediaType,
   imageOverlay: MediaType,
   link: LinkType,
@@ -63,7 +62,7 @@ export const BannerBlock: Block = {
       label: 'Description',
       type: 'textarea',
     },
-    link(),
+    link({ required: false }),
   ],
 };
 

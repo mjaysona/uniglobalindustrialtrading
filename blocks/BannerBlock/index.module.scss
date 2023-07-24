@@ -1,17 +1,31 @@
 .banner {
   color: white;
+  &__default {
+    min-height: 240px;
+    margin-top: 112px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    min-height: 240px;
+    text-align: center;
+  }
+  &__default &__content {
+    text-align: center;
+    padding-top: 3rem;
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      margin: auto;
+      max-width: var(--max-width-sm);
+      padding-top: 1rem;
+    }
+  }
   &__main {
     background-repeat: no-repeat;
     background-size: cover;
-    &__content {
-      max-width: 75%;
-      p {
-        max-width: 60%;
-      }
-      &__cta {
-        padding-top: 1rem;
-      }
-    }
+    min-height: 0;
     &__overlay {
       background-repeat: no-repeat;
       background-position: right -40px bottom -40px;
@@ -19,6 +33,14 @@
       height: calc(78vh - 15rem);
       padding-top: 15rem;
     }
-    
+  }
+  &__main &__content {
+    max-width: var(--max-width-md);
+    p {
+      max-width: var(--max-width-sm);
+    }
+    &__cta {
+      padding-top: 1rem;
+    }
   }
 }

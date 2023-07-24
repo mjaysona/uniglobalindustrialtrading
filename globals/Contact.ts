@@ -1,13 +1,18 @@
 import { GlobalConfig } from 'payload/types';
+import link, { LinkType } from '../fields/link';
+
+export type AddressType = {
+  name: string,
+  id: string,
+  address: {
+    link: LinkType,
+  },
+  contactNumber: string,
+}
 
 export type ContactType = {
   email: string,
-  addresses: {
-    name: string,
-    id: string,
-    address: string,
-    contactNumber: string,
-  }[]
+  addresses: AddressType[]
 }
 
 const Contact: GlobalConfig = {
@@ -35,14 +40,17 @@ const Contact: GlobalConfig = {
         {
           name: 'address',
           label: 'Address',
-          type: 'text',
+          type: 'group',
+          fields: [
+            link(),
+          ]
         },
         {
           name: 'contactNumber',
           label: 'Contact Number',
           type: 'text',
         },
-      ]
+      ],
     },
   ],
 };

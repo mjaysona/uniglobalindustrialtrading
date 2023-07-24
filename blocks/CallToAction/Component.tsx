@@ -17,8 +17,6 @@ export type Button = {
 }
 
 export type Type = {
-  blockType: 'cta'
-  blockName?: string
   content: unknown
   buttons: Button[]
 }
