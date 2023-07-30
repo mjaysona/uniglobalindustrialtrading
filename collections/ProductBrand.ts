@@ -1,7 +1,9 @@
 import { CollectionConfig } from 'payload/types';
 import { MediaType } from './Media';
+import slug from '../fields/slug';
+import createParentField from '@payloadcms/plugin-nested-docs/dist/fields/parent';
 
-export type ProductsBrandType = {
+export type ProductBrandCollectionType = {
   name: string,
   shortName?: string,
   logo: {
@@ -26,6 +28,14 @@ const ProductBrand: CollectionConfig = {
     read: (): boolean => true,
   },
   fields: [
+    createParentField(
+      "productGroup",
+      {
+        admin: {
+          position: "sidebar",
+        },
+      }
+    ),
     {
       name: 'name',
       label: 'Name',
@@ -67,7 +77,8 @@ const ProductBrand: CollectionConfig = {
           relationTo: 'media',
         },
       ]
-    }
+    },
+    slug('name'),
   ],
 };
 

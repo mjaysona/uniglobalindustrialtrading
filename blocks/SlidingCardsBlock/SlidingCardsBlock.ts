@@ -4,6 +4,7 @@ import { MediaType } from '../../collections/Media';
 export type SlidingCardsBlockType = {
   title?: string,
   description?: unknown,
+  background?: string,
   card: {
     logoHeader?: MediaType,
     title: string,
@@ -28,6 +29,21 @@ export const SlidingCardsBlock: Block = {
       name: 'description',
       label: 'Description',
       type: 'richText',
+    },
+    {
+      name: 'background',
+      label: 'Background',
+      type: 'select',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Gray',
+          value: 'gray',
+        },
+      ],
     },
     {
       name: 'card',

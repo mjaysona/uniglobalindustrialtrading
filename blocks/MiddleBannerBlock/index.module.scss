@@ -1,0 +1,36 @@
+.middle-banner {
+  &__images {
+    display: flex;
+    position: relative;
+  }
+  &__image {
+    display: flex;
+    flex: 1;
+    img {
+      width: 100%;
+      max-height: 50vh;
+      object-fit: cover;
+    }
+  }
+  &__items {
+    display: grid;
+  }
+  &__item {
+    padding: 2rem 3rem;
+    &:nth-child(even) {
+      background: var(--color-black-lighter);
+    }
+    &:nth-child(odd) {
+      background: var(--color-black-lightest);
+    }
+  }
+  &__headline {
+    background: rgba(0,0,0,.64);
+    color: white;
+    position: absolute;
+    padding: 1.5rem 2rem;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+  }
+}

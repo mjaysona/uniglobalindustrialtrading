@@ -1,24 +1,21 @@
 import { Block } from 'payload/types';
-import link, { LinkType } from '../../fields/link';
-import { MediaType } from '../../collections/Media';
 
-export type CardImagesType = {
+export type SimpleListBlockType = {
   title?: string,
-  description?: string,
+  description?: unknown,
   background?: string,
-  link: LinkType,
+  columnCount: number,
   items: {
     id: string,
     name: string,
-    image: MediaType,
   }[],
 };
 
-export const CardImagesBlock: Block = {
-  slug: 'cardImages',
+export const SimpleListBlock: Block = {
+  slug: 'simpleList',
   labels: {
-    singular: 'Images inside cards',
-    plural: 'Images inside cards',
+    singular: 'Simple List',
+    plural: 'Simple List',
   },
   fields: [
     {
@@ -27,9 +24,21 @@ export const CardImagesBlock: Block = {
       type: 'text',
     },
     {
-      name: 'description',
-      label: 'Description',
-      type: 'textarea',
+      name: 'columnCount',
+      label: 'Column count',
+      type: 'radio',
+      defaultValue: '3',
+      required: true,
+      options: [
+        {
+          label: '2 columns',
+          value: '2',
+        },
+        {
+          label: '3 columns',
+          value: '3',
+        },
+      ],
     },
     {
       name: 'background',
@@ -46,7 +55,11 @@ export const CardImagesBlock: Block = {
         },
       ],
     },
-    link({ required: false }),
+    {
+      name: 'description',
+      label: 'Description',
+      type: 'richText',
+    },
     {
       name: 'items',
       labels: {
@@ -61,17 +74,10 @@ export const CardImagesBlock: Block = {
           label: 'Name',
           type: 'text',
         },
-        {
-          name: 'image',
-          label: 'Image',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
-        },
       ],
     },
   ],
 };
 
 
-export default CardImagesBlock;
+export default SimpleListBlock;

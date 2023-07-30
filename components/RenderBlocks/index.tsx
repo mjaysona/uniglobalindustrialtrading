@@ -4,8 +4,10 @@ import { components } from '../../blocks';
 import classes from './index.module.scss';
 import Container from '../Container';
 import { ContactUsBlockComponentProps } from '../../blocks/ContactUsBlock/Component';
+import { ProductCollectionType } from '../../collections/Products';
 
 type Props = {
+  data?: ProductCollectionType,
   layout: Layout[],
 } & ContactUsBlockComponentProps;
 
@@ -13,6 +15,7 @@ const RenderBlocks: React.FC<Props> = ({ layout, contact, socials }) => {
   const fullWidthBlocks: string[] = [
     'banner',
     'basicMultipleColumns',
+    'middleBanner',
     'slidingCards',
   ];
   const sections: JSX.Element[] = [];
@@ -31,6 +34,14 @@ const RenderBlocks: React.FC<Props> = ({ layout, contact, socials }) => {
         : {},
     };
     const Block: React.FC<any> = components[block.blockType];
+    const Section: React.FC<{ background?: string }> = ({
+      children,
+      background,
+    }) => (
+      <section className={classes[background === 'gray' ? 'blocks--light' : '']}>
+        { children }
+      </section>
+    );
     
     if (Block) {
       let section: JSX.Element[] = [];
@@ -67,18 +78,25 @@ const RenderBlocks: React.FC<Props> = ({ layout, contact, socials }) => {
         );
       } else {
         section.push(
-          <section key={i}>
+          <Section
+            key={i}
+            background={block.background}
+          >
             <Block {...block} />
-          </section>
+          </Section>
         )
       }
-      
 
       if (!isFullWidthBlock(block.blockType)) {
         sections.push(
-          <Container key={i}>
-            {...section}
-          </Container>
+          <Section
+            key={i}
+            background={block.background}
+          >
+            <Container>
+              {...section}
+            </Container>
+          </Section>
         );
       } else {
         sections.push(...section);

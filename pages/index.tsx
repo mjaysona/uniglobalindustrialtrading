@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 import Page, { getStaticProps as sharedGetStaticProps } from './[...slug]';
 
 export default Page;

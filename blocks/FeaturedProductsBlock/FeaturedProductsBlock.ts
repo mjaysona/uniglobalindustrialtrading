@@ -5,6 +5,7 @@ import link, { CtaType, LinkType } from '../../fields/link';
 export type FeaturedProductsBlockType = {
   title?: string,
   description?: unknown,
+  background?: string,
   product: {
     productImage: MediaType,
     brandName: string,
@@ -30,6 +31,21 @@ export const SlidingCardsBlock: Block = {
       name: 'description',
       label: 'Description',
       type: 'richText',
+    },
+    {
+      name: 'background',
+      label: 'Background',
+      type: 'select',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Gray',
+          value: 'gray',
+        },
+      ],
     },
     {
       name: 'product',

@@ -11,6 +11,7 @@ import {
   IS_CODE,
   IS_SUBSCRIPT,
   IS_SUPERSCRIPT,
+  IS_ALIGN_CENTER,
 } from './RichTextNodeFormat';
 
 import type { SerializedLexicalNode } from './types';
@@ -59,6 +60,9 @@ export const Serialize = ({ nodes }: Props): JSX.Element => {
           }
           if (node.format & IS_SUPERSCRIPT) {
             text = <sup key={index}>{text}</sup>;
+          }
+          if (node.format & IS_ALIGN_CENTER) {
+            text = <span className='center' key={index}>{text}</span>;
           }
 
           return text;

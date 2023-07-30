@@ -3,8 +3,9 @@ import link, { LinkType } from '../../fields/link';
 import { MediaType } from '../../collections/Media';
 
 export type CardLogosBlockType = {
-  title: string,
-  description: unknown,
+  title?: string,
+  description?: unknown,
+  background?: string,
   link: LinkType,
   items: {
     name: string,
@@ -28,6 +29,21 @@ export const CardLogosBlock: Block = {
       name: 'description',
       label: 'Description',
       type: 'richText',
+    },
+    {
+      name: 'background',
+      label: 'Background',
+      type: 'select',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Gray',
+          value: 'gray',
+        },
+      ],
     },
     link({ required: false }),
     {

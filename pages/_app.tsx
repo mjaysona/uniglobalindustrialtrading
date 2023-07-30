@@ -7,13 +7,13 @@ import '../css/style.scss';
 import { ContactType } from '../globals/Contact';
 import { SocialsType } from '../globals/Socials';
 import { useRouter } from 'next/router';
-import { ProductsBrandType } from '../collections/ProductBrand';
+import { ProductBrandCollectionType } from '../collections/ProductBrand';
 
 export type GlobalProps = {
   menu: MenuType,
   contact: ContactType,
   socials: SocialsType,
-  brands: ProductsBrandType[],
+  brands: ProductBrandCollectionType[],
 }
 
 type AppProps = {

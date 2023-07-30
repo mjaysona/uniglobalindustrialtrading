@@ -4,6 +4,8 @@ import { SerializedLexicalEditorState } from '../../components/LexicalRichText/t
 import widthField, { WidthFieldType } from '../../fields/widthField';
 
 export type ContentBlockType = {
+  title?: string,
+  background: string,
   content: {
     jsonContent: SerializedLexicalEditorState,
   },
@@ -17,6 +19,26 @@ export const Content: Block = {
   },
   fields: [
     widthField,
+    {
+      name: 'title',
+      label: 'Title',
+      type: 'text',
+    },
+    {
+      name: 'background',
+      label: 'Background',
+      type: 'select',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Gray',
+          value: 'gray',
+        },
+      ],
+    },
     lexicalRichTextField({
       name: 'content',
       label: 'Enter content below',

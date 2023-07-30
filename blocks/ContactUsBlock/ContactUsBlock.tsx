@@ -15,6 +15,24 @@ export const ContactUsBlock: Block = {
   fields: [
     widthField,
     {
+      name: 'background',
+      label: 'Background',
+      type: 'select',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Gray',
+          value: 'gray',
+        },
+      ],
+      admin: {
+        condition: (_, siblingData) => siblingData.width === 'full',
+      },
+    },
+    {
       name: 'name',
       label: 'Name',
       defaultValue: 'Contact us',

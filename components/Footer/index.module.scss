@@ -1,7 +1,7 @@
 .host {
 	background: var(--color-black-darkest);
 	color: white;
-	padding: 3rem;
+	padding: 3rem 0;
 }
 
 .footer {
@@ -22,6 +22,9 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 2rem;
+    > div > div:first-child {
+      padding-top: 0;
+    }
 	}
 	&__logo {
 		max-width: 292px;

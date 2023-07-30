@@ -2,9 +2,7 @@ import React from 'react';
 import RichText from '../../components/RichText';
 import { ImageContentRowBlockType } from './ImageContentRowBlock';
 import Link from 'next/link';
-import { LinkType } from '../../fields/link';
 import classes from './index.module.scss';
-import Container from '../../components/Container';
 import Button from '../../components/Button';
 
 export const Component: React.FC<ImageContentRowBlockType> = (props) => {

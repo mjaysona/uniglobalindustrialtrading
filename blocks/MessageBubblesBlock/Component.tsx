@@ -2,7 +2,6 @@ import React from 'react';
 import RichText from '../../components/RichText';
 import classes from './index.module.scss';
 import { MessageBubblesBlockType } from './MessageBubblesBlock';
-import Container from '../../components/Container';
 
 export const Component: React.FC<MessageBubblesBlockType> = (props) => {
   const {

@@ -13,7 +13,8 @@ export type FieldType = {
 
 export type FormBlockType = {
   name: string,
-  description: string,
+  description?: string,
+  background?: string,
   fields: FieldType[],
   link: ButtonType,
 } & WidthFieldType;
@@ -30,6 +31,24 @@ export const FormBlock: Block = {
   },
   fields: [
     widthField,
+    {
+      name: 'background',
+      label: 'Background',
+      type: 'select',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Gray',
+          value: 'gray',
+        },
+      ],
+      admin: {
+        condition: (_, siblingData) => siblingData.width === 'full',
+      },
+    },
     {
       name: 'name',
       label: 'Form name',

@@ -1,4 +1,15 @@
 import { CollectionConfig } from 'payload/types';
+import slug from '../fields/slug';
+import createParentField from '@payloadcms/plugin-nested-docs/dist/fields/parent';
+
+export type ProductCollectionType = {
+  id: string,
+  name: string,
+  brand: string,
+  purpose: string,
+  group: string,
+  tags?: string[],
+}
 
 const Products: CollectionConfig = {
   slug: 'products',
@@ -13,6 +24,14 @@ const Products: CollectionConfig = {
     read: (): boolean => true,
   },
   fields: [
+    createParentField(
+      "productGroup",
+      {
+        admin: {
+          position: "sidebar",
+        },
+      }
+    ),
     {
       name: 'name',
       label: 'Name',
@@ -49,6 +68,7 @@ const Products: CollectionConfig = {
         }
       ],
     },
+    slug('name'),
   ],
 };
 

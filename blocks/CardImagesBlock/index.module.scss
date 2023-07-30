@@ -22,5 +22,18 @@
         margin: 0;
       }
     }
+    &__cta {
+      align-items: center;
+      border: 2px solid var(--color-gold);
+      border-radius: 0.25rem;
+      color: var(--color-gold);
+      display: flex;
+      justify-content: center;
+      &:hover {
+        background-color: var(--color-gold);
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
 }

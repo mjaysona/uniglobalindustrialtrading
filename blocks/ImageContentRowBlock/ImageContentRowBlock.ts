@@ -8,6 +8,7 @@ export type ImageContentRowBlockType = {
   image: MediaType,
   title: string,
   description: unknown,
+  background?: string,
   list: {
     link: LinkType,
     id: string,
@@ -22,6 +23,21 @@ export const ImageContentRowBlock: Block = {
     plural: 'Image with Content Rows',
   },
   fields: [
+    {
+      name: 'background',
+      label: 'Background',
+      type: 'select',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Gray',
+          value: 'gray',
+        },
+      ],
+    },
     {
       name: 'layout',
       label: 'Layout',

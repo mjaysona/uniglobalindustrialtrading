@@ -4,6 +4,7 @@ import { MediaType } from '../../collections/Media';
 export type BasicMultipleColumnsBlockType = {
   title?: string,
   description?: unknown,
+  background?: string,
   columnCount: '2' | '3',
   hasImages: boolean,
   imagesType?: 'vector' | 'photo',
@@ -31,6 +32,21 @@ export const BasicMultipleColumnsBlock: Block = {
       name: 'description',
       label: 'Description',
       type: 'richText',
+    },
+    {
+      name: 'background',
+      label: 'Background',
+      type: 'select',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Gray',
+          value: 'gray',
+        },
+      ],
     },
     {
       name: 'columnCount',

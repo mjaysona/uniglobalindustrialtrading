@@ -14,10 +14,23 @@ import SlidingCardsBlock from '../blocks/SlidingCardsBlock/SlidingCardsBlock';
 import VerticalTabsBlock from '../blocks/VerticalTabsBlock/VerticalTabsBlock';
 import ContactUsBlock from '../blocks/ContactUsBlock/ContactUsBlock';
 import CardLogosBlock from '../blocks/CardLogosBlock/CardLogosBlock';
+import SimpleListBlock from '../blocks/SimpleListBlock/SimpleListBlock';
+import HorizontalStepsBlock from '../blocks/HorizontalStepsBlock/HorizontalStepsBlock';
+import MiddleBannerBlock from '../blocks/MiddleBannerBlock/MiddleBannerBlock';
+import TeamBlock from '../blocks/TeamBlock/TeamBlock';
+import populateFullTitle from '../utilities/populateFullTitle';
+
+export type Breadcrumb = {
+  doc: string,
+  url: string,
+  label: string,
+  id: string,
+}
 
 export type Layout = {
   blockType: string,
   blockName: string,
+  background?: string,
   width?: 'full' | 'half',
 }
 
@@ -27,6 +40,8 @@ export type PageType = {
   image?: MediaType,
   buttons: LinkType[],
   layout: Layout[],
+  breadcrumbs: Breadcrumb[],
+  parent?: string,
   meta: {
     title?: string,
     description?: string,
@@ -70,9 +85,13 @@ export const Page: CollectionConfig = {
         ContentBlock,
         FeaturedProductsBlock,
         FormBlock,
+        HorizontalStepsBlock,
         ImageContentRowBlock,
+        MiddleBannerBlock,
         MessageBubblesBlock,
+        SimpleListBlock,
         SlidingCardsBlock,
+        TeamBlock,
         VerticalTabsBlock,
       ],
     },
@@ -98,7 +117,20 @@ export const Page: CollectionConfig = {
         },
       ],
     },
-    slug,
+    slug(),
+    {
+      name: 'hierarchy',
+      type: 'text',
+      localized: true,
+      hooks: {
+        beforeChange: [populateFullTitle],
+      },
+      admin: {
+        components: {
+          Field: () => null,
+        },
+      },
+    },
   ],
 };
 

@@ -10,6 +10,7 @@ import Contact from './globals/Contact';
 import Socials from './globals/Socials';
 import ProductBrand from './collections/ProductBrand';
 import { LexicalPlugin } from 'payload-plugin-lexical';
+import nestedDocs from '@payloadcms/plugin-nested-docs';
 
 dotenv.config();
 
@@ -30,5 +31,11 @@ export default buildConfig({
   ],
   plugins: [
     LexicalPlugin({}),
+    nestedDocs({
+      collections: ['pages'],
+      generateLabel: (_, doc) => doc.title as string || doc.name as string,
+      generateURL: (docs) =>
+        docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
+    }),
   ]
 });

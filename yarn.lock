@@ -704,6 +704,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
+"@payloadcms/plugin-nested-docs@^1.0.6":
+  "integrity" "sha512-+rPMWYYjxxIQeCO+MFlfsj4baLaK3S7RzP4dGouWcCtORbZEXbVPUGXgWWNyAP3FolQh4YDEgFVB4PHyIa+O/A=="
+  "resolved" "https://registry.npmjs.org/@payloadcms/plugin-nested-docs/-/plugin-nested-docs-1.0.6.tgz"
+  "version" "1.0.6"
+
 "@polka/url@^1.0.0-next.20":
   "integrity" "sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g=="
   "resolved" "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.21.tgz"
@@ -5101,7 +5106,7 @@
     "lexical" "0.10.0"
     "openai" "^3.2.1"
 
-"payload@^1.6.32", "payload@^1.7.4":
+"payload@^0.18.5 || ^1.0.0", "payload@^1.6.32", "payload@^1.7.4":
   "integrity" "sha512-pvUjr5w44K5vgnCsP1JblbRKfJ1BmvIKyO9rYQXrHhQiUMuQs0iBqz7jMcW2oLbaR1BbG5e5jNDFO1X+1B+Nyg=="
   "resolved" "https://registry.npmjs.org/payload/-/payload-1.11.1.tgz"
   "version" "1.11.1"
